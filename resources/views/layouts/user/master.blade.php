@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Les services longrich.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.svg')}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/fonts/favicon.svg')}}" />
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/LineIcons.3.0.css') }}" />

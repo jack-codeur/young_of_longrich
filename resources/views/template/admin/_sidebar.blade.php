@@ -1,16 +1,140 @@
-<div id="app-sidepanel" class="app-sidepanel"> 
-    <div id="sidepanel-drop" class="sidepanel-drop"></div>
-    <div class="sidepanel-inner d-flex flex-column">
-        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
-        <div class="app-branding">
-            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">PORTAL</span></a>
 
-        </div><!--//app-branding-->  
-        
-        <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
-            @include('template.admin._menu_super_admin')
-            @include('template.admin._menu_admin')
-        </nav><!--//app-nav-->
-        
-    </div><!--//sidepanel-inner-->
+<div class="sidebar">
+
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{{ asset('assets/images/soins/collection_Bebe_360x.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            </div>
+        <div class="info">
+            <a href="#" class="d-block">Jacques</a>
+        </div>
+    </div>
+
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item mb-3">
+                <a href="{{ route('admin_accueil')}}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Tableau de board
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Produits et services
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('liste_sante')}}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Santé</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('liste_soins')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Soins et beauté</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('liste_hygiene')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Hygiène et traitement</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('liste_bebe')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Spécials bébé</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('liste_ordinateur')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Ordinateurs</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('liste_accessoire')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Accessoires</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Ventes
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('devis')}}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Dévis</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('commandes')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Commandes</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('livraisons')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Livraisons</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('factures')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Factures</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Contacts
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('contact_user')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Utilisateurs</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('contact_client')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Clients</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Simple Link
+                        <span class="right badge badge-danger">New</span>
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 </div>

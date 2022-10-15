@@ -17,17 +17,12 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            "nom_article" => $this->faker->firstName,
-            "roleOuSerie" => $this->faker->lastName,
+            "model_article" => $this->faker->firstName,
             "id_typeArticle" => rand(1,6),
-            "img1_article" => $this->faker->imageUrl(),
-            "img2_article" => $this->faker->imageUrl(),
-            "img3_article" => $this->faker->imageUrl(),
-            "img4_article" => $this->faker->imageUrl(),
+            "image_article" => $this->faker->imageUrl(),
             "prix_promo" => $this->faker->numerify,
-            "prix_article" => $this->faker->numerify,
-            "description_article" => $this->faker->text(15),
-            "mode_utilisation" => $this->faker->text(25)
+            "prix_reel" => $this->faker->numerify,
+            "caracteristique" => $this->faker->text(15),
         ];
     }
 }

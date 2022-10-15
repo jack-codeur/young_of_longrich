@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Article;
 use App\Models\Maladie;
+use App\Models\Produit;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -32,9 +33,11 @@ class DatabaseSeeder extends Seeder
 
         User::factory(15)->create();
         Article::factory(15)->create();
+        Produit::factory(15)->create();
 
 
             User::find(1)->roles()->attach(1);
             User::find(2)->roles()->attach(2);
+
     }
 }

@@ -14,6 +14,9 @@ class Commande extends Model
     public function aticles(){
         $this->belongsTo(Article::class, 'id_commande', 'id');
     }
+    public function produits(){
+        $this->belongsTo(Article::class, 'id_commande', 'id');
+    }
 
     public function users(){
         $this->belongsTo(User::class, 'id_commande', 'id');

@@ -15,17 +15,12 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_article');
-            $table->string('roleOuSerie');
             $table->foreignId('id_typeArticle')->constrained('type_articles');
-            $table->string('img1_article');
-            $table->string('img2_article');
-            $table->string('img3_article');
-            $table->string('img4_article');
+            $table->string('model_article');
+            $table->string('image_article');
             $table->string('prix_promo');
-            $table->string('prix_article');
-            $table->text('description_article');
-            $table->text('mode_utilisation');
+            $table->string('prix_reel');
+            $table->text('caracteristique');
             $table->timestamps();
         });
 

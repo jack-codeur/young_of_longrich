@@ -19,7 +19,4 @@ class Article extends Model
         return $this->hasMany(Commande::class);
     }
 
-    public function maladies(){
-        return $this->belongsToMany(Maladie::class, 'peut_ou_traites', 'id_article', 'id_maladie');
-    }
 }

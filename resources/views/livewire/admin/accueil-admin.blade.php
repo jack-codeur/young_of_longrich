@@ -59,9 +59,6 @@
                 </div><!--//app-card-->
             </div><!--//col-->
         </div><!--//row-->
-        @foreach ( auth()->user()->roles as $role)
-            <div>{{ $role->nomRole }}</div>
-        @endforeach
         
         
     </div><!--//container-fluid-->
