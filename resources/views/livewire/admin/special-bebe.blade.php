@@ -1,6 +1,7 @@
 <div class="app-content p-md-3 p-lg-4 py-3">
 
-    @include('livewire.admin.create_form.create_prdt_bebe')
+    @include('livewire.admin.create_form.create_product_all')
+    @include('livewire.admin.edit_form.edit_product_all')
     
     <div class="content-header">
         <div class="container-fluid">
@@ -20,14 +21,14 @@
     <div class="row mx-4 pt-3">
         <div class="col-12">
             <div class="card">
-                <div class="card-header bg-blue d-flex align-items-center">
-                    <h3 class="card-title flex-grow-1">Liste des produits de bébé</h3>
-                    <div class="card-tools d-flex align-items-center">
+                <div class="card-header bg-blue d-flex flex-wrap align-items-center">
+                    <h3 class="card-title flex-grow-1 mb-2">Liste des produits de bébé</h3>
+                    <div class="card-tools d-flex flex-wrap align-items-center">
 
-                        <button class="btn text-white mr-4 d-block" wire:click="showAddprdtBebe" style="background-color: rgb(59, 85, 202);">Créer un produit</button>
+                        <button class="btn text-white mb-2 mr-4 d-block" wire:click="showAddprdtBebe" style="background-color: rgb(59, 85, 202);">Créer un produit</button>
 
                         <div class="input-group input-group-md" style="width: 250px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                            <input type="text" wire:model.debounce.500ms="search" class="form-control float-right" placeholder="Search">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default">
                                     <i class="fas fa-search"></i>
@@ -36,14 +37,23 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row d-flex justify-content-end mr-2">
+                    <div class="form-group">
+                        <label for="filterByEtat">Filtre par etat</label>
+                        <select type="text" wire:model="filterEtat" id="filterByEtat" class="form-control">
+                            <option value="">---Aucun---</option>
+                            <option value="oui">Disponible</option>
+                            <option value="non">Non disponible</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="card-body table-responsive p-0" style="height: 300px;">
                     <table class="table table-head-fixed text-nowrap table-striped">
                         <thead>
                             <tr>
                                 <th style="width:5%" class="text-center">N°produit</th>
-                                <th style="width:25%" class="text-center">Catégorie</th>
                                 <th style="width:25%" class="text-center">Nom du produit</th>
+                                <th style="width:25%" class="text-center">Disponible</th>
                                 <th style="width:20%" class="text-center">Prix réel</th>
                                 <th style="width:20%" class="text-center">Prix promo</th>
                                 <th style="width:20%" class="text-center">Publié</th>
@@ -51,22 +61,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($prduit_bebe as $bebe )
-                            @if ($bebe->id_typeArticle == 4)
+                        @forelse ($prduit_bebe as $bebe )
+                            {{-- @if ($bebe->id_typeArticle == 4) --}}
                                 <tr>
-                                    <td class="text-center">{{$bebe->id}}</td>
-                                    <td class="text-center">{{$bebe->id_typeArticle}}</td>
-                                    <td class="text-center">{{$bebe->nom_produit}}</td>
-                                    <td class="text-center">{{$bebe->prix_reel}}</td>
-                                    <td class="text-center">{{$bebe->prix_promo}}</td>
-                                    <td class="text-center">{{$bebe->created_at}}</td>
                                     <td class="text-center">
-                                        <button class="btn btn-primary"><i class="far fa-edit fa-1x"></i></button>
-                                        <button class="btn btn-success" ><i class="far fa-trash-alt fa-1x"></i></button>
+                                        <img src="{{asset('storage/'.$bebe->image_1)}}" width="60px" height="60px"/>
+                                    </td>
+                                    <td class="text-center">{{$bebe->nom_produit}}</td>
+                                    <td class="text-center">
+                                        @if((string)$bebe->EstDisponible === 'oui')
+                                            <span class="badge badge-success">Oui</span>
+                                        @else
+                                            <span class="badge badge-danger">Non</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center text-uppercase text-danger">{{$bebe->prix_reel}}fcfa</td>
+                                    <td class="text-center text-uppercase text-success">{{$bebe->prix_promo}}fcfa</td>
+                                    <td class="text-center">{{$bebe->created_at->diffForHumans()}}</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-primary" wire:click="showEditProduct({{$bebe->id}})"><i class="far fa-edit fa-1x"></i></button>
+                                        <button class="btn btn-success" wire:click="confirmDelete('{{$bebe->nom_produit}}', {{$bebe->id}})"><i class="far fa-trash-alt fa-1x"></i></button>
                                     </td>
                                 </tr>
-                            @endif
-                        @endforeach
+                            {{-- @endif --}}
+                            @empty
+                                    <tr>
+                                        <td colspan="7">
+                                            <div class="alert alert-danger">
+                                                <h5><i class="icon fas fa-ban fa-1x">Aucune information ne corresponde au donnée de rechreche</i></h5>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -87,7 +113,7 @@
             Swal.fire({
                 title: event.detail.message.title,
                 text: event.detail.message.text,
-                icon: event.detail.message.type,
+                icon: event.detail.message.icon,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -95,11 +121,11 @@
                 cancelButtonText: 'Annuler'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    @this.deleteUser(event.detail.message.data.user_id);
+                    @this.deleteProduct(event.detail.message.data.product_id);
                 }
             });
 
-            window.addEventListener("showSuccesMessage", event =>{
+            window.addEventListener("showDeleteMessage", event =>{
             
             Swal.fire({
                 position: 'top-end',

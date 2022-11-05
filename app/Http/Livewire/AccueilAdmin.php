@@ -12,8 +12,8 @@ class AccueilAdmin extends Component
 
     public function render()
     {
-        return view('livewire.admin.accueil-admin',)
-            ->extends('layouts.admin.master')
-            ->section('accueil');
+        // return view('livewire.admin.accueil-admin')
+        //     ->extends('layouts.admin.master')
+        //     ->section('accueil');
     }
 }

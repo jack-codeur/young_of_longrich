@@ -16,4 +16,9 @@ class AdminCotroller extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+        return view('pages.admin.accueil-admin');
+    }
+
 }

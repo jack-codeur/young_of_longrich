@@ -19,8 +19,8 @@ class TypeArticleSeeder extends Seeder
             ["nomTypeArticle" => "Santé"],
             ["nomTypeArticle" => "Soins et beauté"],
             ["nomTypeArticle" => "Hygiéne et traitement"],
+            ["nomTypeArticle" => "Spécial Bébé"],
             ["nomTypeArticle" => "Ordinateurs"],
-            ["nomTypeArticle" => "Téléphones"],
             ["nomTypeArticle" => "Accessoirs"],
         ]);
     }

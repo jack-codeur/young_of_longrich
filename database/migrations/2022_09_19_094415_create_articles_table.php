@@ -17,7 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_typeArticle')->constrained('type_articles');
             $table->string('model_article');
-            $table->string('image_article');
+            $table->string('EstDisponible');
+            $table->string('image_1');
+            $table->string('image_2');
+            $table->string('image_3');
+            $table->string('image_4');
             $table->string('prix_promo');
             $table->string('prix_reel');
             $table->text('caracteristique');

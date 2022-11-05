@@ -69,6 +69,13 @@
         })(window, document);
     </script>
 
+    <style>
+        .modal-dialog {
+            max-width: 650px;
+            margin: 1.75rem auto;
+        }
+    </style>
+
     @livewireStyles()
 </head>
 
@@ -107,8 +114,17 @@
         <aside class="control-sidebar control-sidebar-dark">
 
             <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
+                <div class="">
+                    <a class="" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{ __('Deconnexion') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
             </div>
         </aside>
 
@@ -116,7 +132,10 @@
         @include('template.admin._footer')
     </div>
 
-
+    {{-- Sweetalert2 CDN --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- Sweetalert LOCAL --}}
+    <script src="{{ asset('assets/js/sweetalert2.all.min.js')}}"></script>
 
     <script src="{{ asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 
@@ -125,6 +144,7 @@
     <script src="{{ asset('assets/js/adminlte.min.js')}}?v=3.2.0"></script>
 
     @livewireScripts()
+    
 </body>
 
 </html>

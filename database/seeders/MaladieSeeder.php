@@ -33,14 +33,15 @@ class MaladieSeeder extends Seeder
             ["nom" => "staphilocoque"], ["nom" => "mal de dent"],
             ["nom" => "Rhumatisme"], ["nom" => "Infection des voie urinaire"],
             ["nom" => "Infertilité masculine"], ["nom" => "Taux de cholesterol élévé"],
-           ["nom" => "Chute des cheveux"], "nom" => ["Inflamation du colon"],
+            ["nom" => "Chute des cheveux"], "nom" => ["Inflamation du colon"],
             ["nom" => "Maladie vasculaire biliaire"], ["nom" => "Dysenterie"],
             ["nom" => "Mauvaise haleine"],  ["nom" => "Asthme"],
             ["nom" => "mal de poitrine"], ["nom" => "Odeurs corporelle"],
             ["nom" => "Eczema"],  ["nom" => "Infertilité feminine"],
             ["nom" => "Fracture des os"], ["nom" => "Fatigue générale"],
             ["nom" => "Lèpre"], ["nom" => "Cicatrice"],
-            ["nom" => "Perte de mémoire"]
+            ["nom" => "Perte de mémoire"], ["nom" => "AVC"], ["nom" => "VIH"],
+            ["nom" => "Bouton sur le visage et le corps"]
 
         ]);
     }

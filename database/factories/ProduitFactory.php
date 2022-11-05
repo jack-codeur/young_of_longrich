@@ -18,9 +18,12 @@ class ProduitFactory extends Factory
     {
         return [
             "nom_produit" => $this->faker->firstName,
-            "maladie" => $this->faker->lastName,
             "id_typeArticle" => rand(1,6),
-            "image_produit" => $this->faker->imageUrl(),
+            "EstDisponible" => rand(0,1),
+            "image_1" => $this->faker->imageUrl(),
+            "image_2" => $this->faker->imageUrl(),
+            "image_3" => $this->faker->imageUrl(),
+            "image_4" => $this->faker->imageUrl(),
             "prix_promo" => $this->faker->numerify,
             "prix_reel" => $this->faker->numerify,
             "description_produit" => $this->faker->text(15),

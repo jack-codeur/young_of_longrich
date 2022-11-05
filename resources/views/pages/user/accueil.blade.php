@@ -61,7 +61,6 @@
         </div>
     </div>
 </section>
-<!-- section partenaire et client -->
 <section class="team section p-0">
     <div class="container">
         <div class="row">
@@ -783,152 +782,85 @@
 
         <div id="produits" class="row ">
             <div class="d-flex justify-content-between align-items-center flex-wrap items-center pt-5 mt-3">
-                <div>
+                <div class="flex-grow-1">
                     <h4 class="">Rechercher ici le(s) produit(s) que vous avez besoin</h4>
                     <p>écrivez simplement le nom de la maladie et vous aurez le(e) produit(s) qui en traitent.</p>
                 </div>
-                <div class="d-flex align-items-center navbar-search search-style-5">
-                    <div class="search-input">
-                        <input type="seach" placeholder="Search" class="form-control me-2">
-                    </div>
-                    <div class="search-btn  fs-4">
-                        <button class="btn btn-primary"><i class="lni lni-search-alt"></i></button>
-                    </div>
-                </div>
+
+                
 
             </div>
-            <section class="home-product-list section pt-5">
+            {{-- <section class="home-product-list section pt-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-12 custom-responsive-margin">
+                        <div class="col-lg-4 col-md-4 col-12">
                             <h4 class="list-title">Soins corporels</h4>
 
-                            <div class="single-list">
-                                <div class="list-image">
-                                    <a href="product-grids.html"><img src="assets/images/soins/CREME-A-MAI-reparatrice.png" alt="#"></a>
-                                </div>
-                                <div class="list-info">
-                                    <h3>
-                                        <a href="product-grids.html">Crème à main réparatrice</a>
-                                    </h3>
-                                    <span>$287.99</span>
-                                </div>
-                            </div>
-
-
-                            <div class="single-list">
-                                <div class="list-image">
-                                    <a href="product-grids.html"><img src="assets/images/soins/lait-corporel.jpg" alt="#"></a>
-                                </div>
-                                <div class="list-info">
-                                    <h3>
-                                        <a href="product-grids.html">Lait de corps à base de placenta de brebis</a>
-                                    </h3>
-                                    <span>$95.00</span>
-                                </div>
-                            </div>
-
-
-                            <div class="single-list">
-                                <div class="list-image">
-                                    <a href="product-grids.html"><img src="assets/images/soins/lait reparatrice.jpg" alt="#"></a>
-                                </div>
-                                <div class="list-info">
-                                    <h3>
-                                        <a href="product-grids.html">Lait de corps rajeunissant</a>
-                                    </h3>
-                                    <span>$120.00</span>
-                                </div>
-                            </div>
+                            @if (isset($produits))
+                                @foreach ($produits as $produit)
+                                    @if ($produit->id_typeArticle == 2)
+                                        <div class="single-list">
+                                            <div class="list-image">
+                                                <a href="product-grids.html"><img src="assets/images/soins/CREME-A-MAI-reparatrice.png" alt="#"></a>
+                                            </div>
+                                            <div class="list-info">
+                                                <h3>
+                                                    <a href="product-grids.html">{{$produit->nom_produit}}</a>
+                                                </h3>
+                                                <span>${{$produit->prix_promo}}</span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                
+                                @endforeach
+                            @endif
 
                         </div>
-                        <div class="col-lg-4 col-md-4 col-12 custom-responsive-margin">
+                        <div class="col-lg-4 col-md-4 col-12">
                             <h4 class="list-title">Santé</h4>
 
-                            <div class="single-list">
-                                <div class="list-image">
-                                    <a href="product-grids.html"><img src="assets/images/sante/arthro-supreviver.jpg" alt="#"></a>
-                                </div>
-                                <div class="list-info">
-                                    <h3>
-                                        <a href="product-grids.html">Arthro SupReviver</a>
-                                    </h3>
-                                    <span>$1150.00</span>
-                                </div>
-                            </div>
-
-
-                            <div class="single-list">
-                                <div class="list-image">
-                                    <a href="product-grids.html"><img src="assets/images/sante/CORDYCEPS-MILITARIS-600x600.jpg" alt="#"></a>
-                                </div>
-                                <div class="list-info">
-                                    <h3>
-                                        <a href="product-grids.html">Cordyceps militaris</a>
-                                    </h3>
-                                    <span>$950.00</span>
-                                </div>
-                            </div>
-
-
-                            <div class="single-list">
-                                <div class="list-image">
-                                    <a href="product-grids.html"><img src="assets/images/sante/gobelet.jpg" alt="#"></a>
-                                </div>
-                                <div class="list-info">
-                                    <h3>
-                                        <a href="product-grids.html">Le Gobelet alcalin</a>
-                                    </h3>
-                                    <span>$298.00</span>
-                                </div>
-                            </div>
+                            @foreach ($produits as $produit)
+                                @if ($produit->id_typeArticle == 1)
+                                    <div class="single-list">
+                                        <div class="list-image">
+                                            <a href="product-grids.html"><img src="assets/images/soins/CREME-A-MAI-reparatrice.png" alt="#"></a>
+                                        </div>
+                                        <div class="list-info">
+                                            <h3>
+                                                <a href="product-grids.html">{{$produit->nom_produit}}</a>
+                                            </h3>
+                                            <span>${{$produit->prix_promo}}</span>
+                                        </div>
+                                    </div>
+                                @endif
+                                
+                            @endforeach
 
                         </div>
                         <div class="col-lg-4 col-md-4 col-12">
                             <h4 class="list-title">Hygiène et entretien</h4>
 
-                            <div class="single-list">
-                                <div class="list-image">
-                                    <a href="product-grids.html"><img src="assets/images/hygiene/Longrich-serviettes-hygieniques.jpg" alt="#"></a>
-                                </div>
-                                <div class="list-info">
-                                    <h3>
-                                        <a href="product-grids.html">Superbklean serviette hygiénique et protège slip</a>
-                                    </h3>
-                                    <span>$68.00</span>
-                                </div>
-                            </div>
-
-
-                            <div class="single-list">
-                                <div class="list-image">
-                                    <a href="product-grids.html"><img src="assets/images/hygiene/photo_2022-04-26_17-32-18.jpg" alt="#"></a>
-                                </div>
-                                <div class="list-info">
-                                    <h3>
-                                        <a href="product-grids.html">Savon à base de charbon de bambou</a>
-                                    </h3>
-                                    <span>$840.00</span>
-                                </div>
-                            </div>
-
-
-                            <div class="single-list">
-                                <div class="list-image">
-                                    <a href="product-grids.html"><img src="assets/images/hygiene/Dentifrice-Longrich.jpeg" alt="#"></a>
-                                </div>
-                                <div class="list-info">
-                                    <h3>
-                                        <a href="product-grids.html">Dentifrice à base de thé blanc</a>
-                                    </h3>
-                                    <span>$28.00</span>
-                                </div>
-                            </div>
+                            @foreach ($produits as $produit)
+                                @if ($produit->id_typeArticle == 3)
+                                    <div class="single-list">
+                                        <div class="list-image">
+                                            <a href="product-grids.html"><img src="assets/images/soins/CREME-A-MAI-reparatrice.png" alt="#"></a>
+                                        </div>
+                                        <div class="list-info">
+                                            <h3>
+                                                <a href="product-grids.html">{{$produit->nom_produit}}</a>
+                                            </h3>
+                                            <span>${{$produit->prix_promo}}</span>
+                                        </div>
+                                    </div>
+                                @endif
+                                
+                            @endforeach
 
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
         </div>
     </div>
 </section>

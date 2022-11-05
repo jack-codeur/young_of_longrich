@@ -11,7 +11,7 @@ class Maladie extends Model
 
     protected $table = "maladies";
 
-    public function articles(){
-        return $this->belongsToMany(Article::class, 'peut_ou_traites', 'id_maladie', 'id_article');
-    }
+    // public function produits(){
+    //     return $this->belongsToMany(Produit::class, 'peut_ou_est', 'id_maladie', 'id_produit');
+    // }
 }

@@ -21,6 +21,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return redirect()->route('accueil');
+        return redirect()->route('admin_accueil');
     }
 }

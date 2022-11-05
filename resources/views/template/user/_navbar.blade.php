@@ -13,7 +13,7 @@
         </div>
         <div class="col-lg-6 col-md-6 col-12">
           <div class="top-end">
-
+            
             {{-- user name find --}}
             @if (auth()->user())
               <div class="user">
@@ -21,20 +21,11 @@
                   <li><a href="javascript:void(0)">{{ userFullName() }}</a></li>
                 </ul>
               </div>
-            @endif
-
-            <ul class="user-login">
-              <li>
-                <a href="{{ route('contact') }}">Contact</a>
-              </li>
-              <li>
-                <a href="{{ route('login') }}">Connexion</a>
-              </li>
-              <li>
-                <a href="{{ route('register') }}">Inscription</a>
-              </li>
-              {{-- la deconnexion --}}
-              @if (auth()->user())
+              <ul class="user-login">
+                <li>
+                  <a href="{{ route('contact') }}">Contact</a>
+                </li>
+                {{-- la deconnexion --}}
                 <li class="">
                   <a class="" href="{{ route('logout') }}"
                       onclick="event.preventDefault();
@@ -46,9 +37,20 @@
                       @csrf
                   </form>
                 </li>
-              @endif
-
-            </ul>
+              </ul>
+            @else
+              <ul class="user-login">
+                <li>
+                  <a href="{{ route('contact') }}">Contact</a>
+                </li>
+                <li>
+                  <a href="{{ route('login') }}">Connexion</a>
+                </li>
+                <li>
+                  <a href="{{ route('index') }}">Inscription</a>
+                </li>
+              </ul>
+            @endif
           </div>
         </div>
       </div>

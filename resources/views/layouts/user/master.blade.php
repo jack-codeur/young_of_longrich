@@ -36,6 +36,7 @@
             width: 60% !important;
         }
     </style>
+    @livewireStyles()
 </head>
 
 <body>
@@ -71,6 +72,11 @@
         <i class="lni lni-chevron-up"></i>
     </a>
 
+    {{-- Sweetalert2 CDN --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- Sweetalert LOCAL --}}
+    <script src="{{ asset('assets/js/sweetalert2.all.min.js')}}"></script>
+    
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/tiny-slider.js') }}"></script>
@@ -78,6 +84,7 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/page.js')}}"></script>
     
+    @livewireScripts()
 </body>
 
 

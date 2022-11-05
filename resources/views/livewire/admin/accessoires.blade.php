@@ -1,7 +1,8 @@
 <div class="app-content p-md-3 p-lg-4 py-3">
 
-        @include('livewire.admin.create_form.create_prdt_accessoire')
-        
+        @include('livewire.admin.create_form.create_article_all')
+        @include('livewire.admin.edit_form.edit_article_all')
+
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row">
@@ -20,14 +21,14 @@
         <div class="row mx-4 pt-3">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header bg-blue d-flex align-items-center">
-                        <h3 class="card-title flex-grow-1">Liste des accessoires</h3>
-                        <div class="card-tools d-flex align-items-center">
+                    <div class="card-header bg-blue d-flex flex-wrap align-items-center">
+                        <h3 class="card-title flex-grow-1 mb-2">Liste des accessoires</h3>
+                        <div class="card-tools d-flex flex-wrap align-items-center">
 
-                            <button class="btn text-white mr-4 d-block" wire:click="showAddprdtAcce" style="background-color: rgb(59, 85, 202);">Ajouter un ordi</button>
+                            <button class="btn text-white mb-2 mr-4 d-block" wire:click="showAddprdtAcce" style="background-color: rgb(59, 85, 202);">Ajouter un ordi</button>
 
                             <div class="input-group input-group-md" style="width: 250px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                <input type="text" wire:model.debounce.500ms="search" class="form-control float-right" placeholder="Search">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
                                         <i class="fas fa-search"></i>
@@ -36,7 +37,16 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="row d-flex justify-content-end mr-2">
+                        <div class="form-group">
+                            <label for="filterByEtat">Filtre par la disponibilité</label>
+                            <select type="text" wire:model="filterEtat" id="filterByEtat" class="form-control">
+                                <option value="">---Aucune valeur---</option>
+                                <option value="oui">Oui</option>
+                                <option value="non">Non</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="card-body table-responsive p-0" style="height: 300px;">
                         <table class="table table-head-fixed text-nowrap table-striped">
                             <thead>
@@ -51,22 +61,38 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($accessoires as $accessoire )
-                                @if ($accessoire->id_typeArticle == 5)
+                                @forelse ($accessoires as $accessoire )
+                                    {{-- @if ($accessoire->id_typeArticle == 5) --}}
                                     <tr>
-                                        <td class="text-center">{{$accessoire->id}}</td>
-                                        <td class="text-center">{{$accessoire->id_typeArticle}}</td>
-                                        <td class="text-center">{{$accessoire->nom_produit}}</td>
-                                        <td class="text-center">{{$accessoire->prix_reel}}</td>
-                                        <td class="text-center">{{$accessoire->prix_promo}}</td>
-                                        <td class="text-center">{{$accessoire->created_at}}</td>
                                         <td class="text-center">
-                                            <button class="btn btn-primary"><i class="far fa-edit fa-1x"></i></button>
-                                            <button class="btn btn-success" ><i class="far fa-trash-alt fa-1x"></i></button>
+                                            <img src="{{asset('storage/'.$accessoire->image_1)}}" width="60px" height="60px"/>
+                                        </td>
+                                        <td class="text-center">{{$accessoire->model_article}}</td>
+                                        <td class="text-center">
+                                            @if((string)$accessoire->EstDisponible === 'oui')
+                                                <span class="badge badge-success">Oui</span>
+                                            @else
+                                                <span class="badge badge-danger">Non</span>
+                                            @endif
+                                        </td>
+                                        <td class="text-center text-uppercase text-danger">{{$accessoire->prix_reel}}fcfa</td>
+                                        <td class="text-center text-uppercase text-success">{{$accessoire->prix_promo}}fcfa</td>
+                                        <td class="text-center">{{$accessoire->created_at->diffForHumans()}}</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-primary" wire:click="showEditArticle({{$accessoire->id}})"><i class="far fa-edit fa-1x"></i></button>
+                                            <button class="btn btn-success" wire:click="confirmDeleteMessage('{{$accessoire->model_article}}', {{$accessoire->id}})"><i class="far fa-trash-alt fa-1x"></i></button>
                                         </td>
                                     </tr>
-                                @endif
-                            @endforeach
+                                    {{-- @endif --}}
+                                @empty
+                                    <tr>
+                                        <td colspan="7">
+                                            <div class="alert alert-danger">
+                                                <h5><i class="icon fas fa-ban fa-1x">Aucune information ne corresponde au donnée de rechreche</i></h5>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -82,12 +108,12 @@
 
         <script>
 
-            window.addEventListener("showConfirmMessage", event =>{
+            window.addEventListener("showConfrmMessage", event =>{
                 
                 Swal.fire({
                     title: event.detail.message.title,
                     text: event.detail.message.text,
-                    icon: event.detail.message.type,
+                    icon: event.detail.message.icon,
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
@@ -95,7 +121,7 @@
                     cancelButtonText: 'Annuler'
                     }).then((result) => {
                     if (result.isConfirmed) {
-                        @this.deleteUser(event.detail.message.data.user_id);
+                        @this.deleteArticle(event.detail.message.data.article_id);
                     }
                 });
 

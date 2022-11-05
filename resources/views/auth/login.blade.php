@@ -46,7 +46,7 @@
                         <div class="button">
                             <button class="btn" type="submit">Enregistrement</button>
                         </div>
-                        <p class="outer-link">Vous n'avez de compte? <a href="{{ route('login') }}">Créer un compte </a>
+                        <p class="outer-link">Vous n'avez de compte? <a href="{{ route('register') }}">Créer un compte </a>
                         </p>
                     </div>
                 </form>

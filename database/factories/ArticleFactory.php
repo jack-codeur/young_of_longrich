@@ -19,7 +19,11 @@ class ArticleFactory extends Factory
         return [
             "model_article" => $this->faker->firstName,
             "id_typeArticle" => rand(1,6),
-            "image_article" => $this->faker->imageUrl(),
+            "EstDisponible" => rand(0,1),
+            "image_1" => $this->faker->imageUrl(),
+            "image_2" => $this->faker->imageUrl(),
+            "image_3" => $this->faker->imageUrl(),
+            "image_4" => $this->faker->imageUrl(),
             "prix_promo" => $this->faker->numerify,
             "prix_reel" => $this->faker->numerify,
             "caracteristique" => $this->faker->text(15),
