@@ -41,9 +41,9 @@
                         <div class="form-group">
                             <label for="filterByEtat">Filtre par la disponibilité</label>
                             <select type="text" wire:model="filterEtat" id="filterByEtat" class="form-control">
-                                <option value="">---Aucune valeur---</option>
-                                <option value="oui">Oui</option>
-                                <option value="non">Non</option>
+                                <option value="">---Aucun---</option>
+                                <option value="oui">Disponible</option>
+                                <option value="non">Non disponible</option>
                             </select>
                         </div>
                     </div>
@@ -52,8 +52,8 @@
                             <thead>
                                 <tr>
                                     <th style="width:5%" class="text-center">N°produit</th>
-                                    <th style="width:25%" class="text-center">Catégorie</th>
                                     <th style="width:25%" class="text-center">Model</th>
+                                    <th style="width:25%" class="text-center">Disponible</th>
                                     <th style="width:20%" class="text-center">Prix réel</th>
                                     <th style="width:20%" class="text-center">Prix promo</th>
                                     <th style="width:20%" class="text-center">Publié</th>
@@ -67,7 +67,7 @@
                                         <td class="text-center">
                                             <img src="{{asset('storage/'.$accessoire->image_1)}}" width="60px" height="60px"/>
                                         </td>
-                                        <td class="text-center">{{$accessoire->model_article}}</td>
+                                        <td class="text-center">{{$accessoire->nom_produit}}</td>
                                         <td class="text-center">
                                             @if((string)$accessoire->EstDisponible === 'oui')
                                                 <span class="badge badge-success">Oui</span>
@@ -80,7 +80,7 @@
                                         <td class="text-center">{{$accessoire->created_at->diffForHumans()}}</td>
                                         <td class="text-center">
                                             <button class="btn btn-primary" wire:click="showEditArticle({{$accessoire->id}})"><i class="far fa-edit fa-1x"></i></button>
-                                            <button class="btn btn-success" wire:click="confirmDeleteMessage('{{$accessoire->model_article}}', {{$accessoire->id}})"><i class="far fa-trash-alt fa-1x"></i></button>
+                                            <button class="btn btn-success" wire:click="confirmDeleteMessage('{{$accessoire->nom_produit}}', {{$accessoire->id}})"><i class="far fa-trash-alt fa-1x"></i></button>
                                         </td>
                                     </tr>
                                     {{-- @endif --}}

@@ -12,6 +12,6 @@ class StatusCommande extends Model
     protected $table = 'status_commandes';
 
     public function commandes(){
-        $this->belongsTo(Commande::class);
+        $this->hasMany(Commande::class);
     }
 }

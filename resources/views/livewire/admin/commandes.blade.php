@@ -52,9 +52,9 @@
 							<tr>
 								<th style="width:4%" class="text-center">N°Commande</th>
 								<th style="width:20%" class="text-center">Nom client</th>
-								<th style="width:15%" class="text-center">Catégorie</th>
-								<th style="width:20%" class="text-center">Article</th>
+								<th style="width:20%" class="text-center">Produit</th>
 								<th style="width:10%" class="text-center">Quantité</th>
+								<th style="width:10%" class="text-center">Prix</th>
                                 <th style="width:20%" class="text-center">Prix total</th>
                                 <th style="width:15%" class="text-center">Etat</th>
 								<th style="width:15%" class="text-center">Créé</th>
@@ -64,15 +64,13 @@
 						<tbody>
 							@forelse ($commandes as $commande )
 								<tr>
-									<td class="text-center">
-										<i class="fa fa-user"></i>
-									</td>
+									<td class="text-center">{{$loop->index + 1}}</td>
+									{{-- <td class="text-center">{{$commande}}</td> --}}
 									<td class="text-center">{{$commande->nom}}</td>
-									<td class="text-center">{{$commande->prenom}}</td>
-									<td class="text-center">{{$commande->nmeroTel}}</td>
-									<td class="text-center">{{$commande->email}}</td>
-                                    <td class="text-center">{{$commande->email}}</td>
-                                    <td class="text-center">{{$commande->email}}</td>
+									<td class="text-center">{{$commande->quantite}}</td>
+                                    <td class="text-center">{{$commande->prix}}</td>
+                                    <td class="text-center">{{$commande->total}}</td>
+									<td class="text-center">{{$commande->id_statusCommande}}</td>
 									<td class="text-center">{{$commande->created_at->diffForHumans()}}</td>
 									<td class="text-center">
 										<button class="btn btn-primary"><i class="far fa-edit fa-1x"></i></button>

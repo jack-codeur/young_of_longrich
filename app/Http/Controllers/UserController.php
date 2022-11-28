@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Maladie;
 use App\Models\Produit;
 use App\Models\TypeArticle;
@@ -66,7 +67,11 @@ class UserController extends Controller
 //         return view('pages.user.produit_autres');
 //     }
 
-//     public function details(){
-//         return view('pages.user.view_produit');
-//     }
+    // public function details(){
+    //     return view('pages.user.view_produit', [
+    //         'products' => $this->product,
+    //         'articles' => Article::all()
+    //     ]);
+    // }
+
 }

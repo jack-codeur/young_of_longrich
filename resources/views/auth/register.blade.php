@@ -17,7 +17,6 @@
     </div>
 </div>
 
-
 <div class="account-login section">
     <div class="container">
         <div class="row">
@@ -30,6 +29,14 @@
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
+                        </div>
+                    @endif
+                    @if(Session::has('message'))
+                        <div class="alert alert-success">
+                            {{ Session::get('message') }}
+                            @php
+                                Session::forget('message');
+                            @endphp
                         </div>
                     @endif
                 </div>
@@ -79,9 +86,10 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
+                            <small>Votre mot de passe ne doit pas être en dessous de 08 caractères, soit 08 ou plus</small>
                         </div>
                         <div class="button">
-                            <button class="btn" type="submit">Connexion</button>
+                            <button class="btn" type="submit">VALIDER</button>
                         </div>
                         <p class="outer-link">Avez-vous un compte? <a href="{{route('login')}}">Connectez vous </a>
                         </p>

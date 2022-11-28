@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- @include('template.user._navbar') -->
 
     @yield('register')

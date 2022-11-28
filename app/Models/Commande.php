@@ -10,19 +10,21 @@ class Commande extends Model
     use HasFactory;
 
     protected $table = 'commandes';
+    protected $fillable = ['quantite', 'nom', 'prix', 'total', 'id_statusCommande'];
 
-    public function aticles(){
-        $this->belongsTo(Article::class, 'id_commande', 'id');
-    }
+    // public function aticles(){
+    //     $this->belongsTo(Article::class, 'id_commande', 'id');
+    // }
+
     public function produits(){
-        $this->belongsTo(Article::class, 'id_commande', 'id');
+        $this->belongsTo(Produit::class, 'id_commande', 'id');
     }
 
     public function users(){
-        $this->belongsTo(User::class, 'id_commande', 'id');
+        $this->belongsTo(User::class, 'id_user', 'id');
     }
 
-    public function status(){
+    public function statuts(){
         $this->belongsTo(StatusCommande::class, 'id_statusCommande', 'id');
     }
 

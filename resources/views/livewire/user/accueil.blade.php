@@ -1,4 +1,4 @@
-{{-- 
+
 <section class="about-us section pt-3">
     <div class="container">
         <div class="row align-items-center">
@@ -807,7 +807,7 @@
                                 @if ($produit->id_typeArticle == 2)
                                     <div class="single-list">
                                         <div class="list-image">
-                                            <a href="product-grids.html"><img src="{{ Storage::url($produit->image_produit) }}" alt="#"></a>
+                                            <a href="product-grids.html"><img src="{{ Storage::url($produit->image_1)}}" alt="#"></a>
                                         </div>
                                         <div class="list-info">
                                             <h3>
@@ -828,7 +828,7 @@
                                 @if ($produit->id_typeArticle == 1)
                                     <div class="single-list">
                                         <div class="list-image">
-                                            <a href="product-grids.html"><img src="assets/images/soins/CREME-A-MAI-reparatrice.png" alt="#"></a>
+                                            <a href="product-grids.html"><img src="{{ Storage::url($produit->image_1)}}" alt="#"></a>
                                         </div>
                                         <div class="list-info">
                                             <h3>
@@ -849,7 +849,7 @@
                                 @if ($produit->id_typeArticle == 3)
                                     <div class="single-list">
                                         <div class="list-image">
-                                            <a href="product-grids.html"><img src="assets/images/soins/CREME-A-MAI-reparatrice.png" alt="#"></a>
+                                            <a href="product-grids.html"><img src="{{ Storage::url($produit->image_1)}}" alt="#"></a>
                                         </div>
                                         <div class="list-info">
                                             <h3>
@@ -868,4 +868,4 @@
             </section>
         </div>
     </div>
-</section> --}}
+</section>

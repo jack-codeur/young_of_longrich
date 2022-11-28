@@ -13,11 +13,14 @@ class Accueil extends Component
     
     public function render()
     {
-        $searchP = "%". $this->search. "%";
+        $search_product = Produit::query();
 
+        if ($this->search != ""){
+            $search_product->where('nom_produit', 'like', "%".$this->search. "%");
+        }
 
         return view('livewire.user.accueil',[
-            'produits' => Produit::where('nom_produit', 'like', $searchP)->latest()->get(),
+            'produits' => $search_product->latest()->get(),
         ])
                 ->extends('layouts.user.master')
                 ->section('accueil');

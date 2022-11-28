@@ -67,7 +67,7 @@
                                     <td class="text-center">
                                         <img src="{{asset('storage/'.$ordis->image_1)}}" width="60px" height="60px"/>
                                     </td>
-                                    <td class="text-center">{{$ordis->model_article}}</td>
+                                    <td class="text-center">{{$ordis->nom_produit}}</td>
                                     <td class="text-center">
                                         @if((string)$ordis->EstDisponible === 'oui')
                                             <span class="badge badge-success">Oui</span>

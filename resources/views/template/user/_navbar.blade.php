@@ -60,11 +60,12 @@
 
   <div class="header-middle">
     <div class="container">
+    
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-3 col-7">
-
+    
           <a class="navbar-brand" href="{{ route('boutique') }}">
-            <img src="{{ asset('assets/images/logo/logo.svg')}}" alt="Logo">
+            Young Of Longrich
           </a>
 
         </div>
@@ -74,7 +75,7 @@
 
             <div class="navbar-search search-style-5">
               <div class="search-input">
-                <input type="text" placeholder="Recherche">
+                <input type="search" wire:model.debounce='search' placeholder="Recherche">
               </div>
               <div class="search-btn">
                 <button><i class="lni lni-search-alt"></i></button>
@@ -87,19 +88,38 @@
         <div class="col-lg-4 col-md-2 col-5">
           <div class="d-flex align-items-center">
             <div class="nav-hotline">
-              <i class="lni lni-phone"></i>
+              <a href="javascript:void(0)" class="main-btn logo-reseau-sociaux">
+                  <i class="lni lni-phone"></i>
+              </a>
               <h3>Télépphone:
                 <span>(+225) 07 48 548 680</span>
               </h3>
             </div>
-            <div class="navbar-cart">
-              <div class="cart-items">
-                <a href="javascript:void(0)" class="main-btn logo-reseau-sociaux">
-                  <i class="lni lni-cart"></i>
-                </a>
-              </div>
-            </div>
-
+            @if (auth()->user())
+              @if ($cartCount)
+                <i class="lni lni-cart fs-5">
+                  <a href="{{route('panier')}}" class="mainbtn">
+                    Panier({{$cartCount}})
+                  </a>
+                </i>
+              @else
+                <div class="navbar-cart">
+                  <div class="cart-items">
+                    <i class="lni lni-cart fs-5">
+                      <a href="{{route('panier')}}" class="mainbtn">
+                        Panier({{$cartCount}})
+                      </a>
+                    </i>
+                  </div>
+                </div>
+              @endif
+            @else
+                <i class="lni lni-cart fs-5">
+                  <a href="{{route('panier')}}" class="mainbtn">
+                    Panier({{$cartCount}})
+                  </a>
+                </i>
+            @endif
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

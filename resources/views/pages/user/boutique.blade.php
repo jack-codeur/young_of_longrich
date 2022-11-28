@@ -46,7 +46,7 @@
                         <li>Cancère</li>
                         <li>Infection</li>
                         <li>Tension ...</li>
-                        <li><a class="btn" href="{{ route('produit_sante')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">Voir plus</a></li>
+                        <li><a class="btn" href="{{ route('produit_sante')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">VOIR PLUS</a></li>
                     </ul>
                     <div class="images">
                         <img src="assets/images/featured-categories/calcium.png" alt="#">
@@ -63,7 +63,7 @@
                         <li>Corps sèc</li>
                         <li>Tâche et Bouton</li>
                         <li>Vergeture ...</li>
-                        <li><a class="btn" href="{{ route('produit_soins')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">Voir plus</a></li>
+                        <li><a class="btn" href="{{ route('produit_soins')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">VOIR PLUS</a></li>
                     </ul>
                     <div class="images">
                         <img src="assets/images/featured-categories/lait-corporel.png" alt="#">
@@ -80,7 +80,7 @@
                         <li>Cancère</li>
                         <li>Fibrome</li>
                         <li>mauvaise odeur ...</li>
-                        <li><a class="btn" href="{{ route('produit_hygiene')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">Voir plus</a></li>
+                        <li><a class="btn" href="{{ route('produit_hygiene')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">VOIR PLUS</a></li>
                     </ul>
                     <div class="images">
                         <img src="assets/images/featured-categories/serviette-hygienique-magnetiques.png" alt="#">
@@ -98,7 +98,7 @@
                         <li>Les tâches</li>
                         <li>Tous types de produits Bébé</li>
 
-                        <li><a class="btn" href="{{ route('produit_bebe')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">Voir plus</a></li>
+                        <li><a class="btn" href="{{ route('produit_bebe')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">VOIR PLUS</a></li>
                     </ul>
                     <div class="images">
                         <img src="{{ asset('assets/images/soins/collection_Bebe_360x.jpg')}}" alt="#">
@@ -115,7 +115,7 @@
                         <li>Lenevo</li>
                         <li>MacBook</li>
                         <li>Acces ...</li>
-                        <li><a class="btn" href="{{ route('produit_ordis')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">Voir plus</a></li>
+                        <li><a class="btn" href="{{ route('produit_ordis')}}" style="font-size: 14px; color: black; background-color: rgba(0, 255, 204, 0.88)">VOIR PLUS</a></li>
                     </ul>
                     <div class="images">
                         <img src="assets/images/featured-categories/ideapad-ordinateur.png" alt="#">
@@ -502,9 +502,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>Special Offer</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                        suffered alteration in some form.</p>
+                    <h2>Offre spéciale</h2>
                 </div>
             </div>
         </div>
@@ -515,7 +513,7 @@
 
                         <div class="single-product">
                             <div class="product-image">
-                                <img src="assets/images/products/product-3.jpg" alt="#">
+                                <img src="{{asset('assets/images/products/product-3.jpg')}}" alt="#">
                                 <div class="button">
                                     <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to
                                         Cart</a>
@@ -605,7 +603,7 @@
 
                 <div class="single-banner right" style="background-image:url('{{ asset('assets/images/banner/banner-3-bg.jpg')}}');margin-top: 30px;">
                     <div class="content">
-                        <h2>Samsung Notebook 9 </h2>
+                        <h2>Tous les models d'ordinateur sont disponible </h2>
                         <p>Lorem ipsum dolor sit amet, <br>eiusmod tempor
                             incididunt ut labore.</p>
                         <div class="price">

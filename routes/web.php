@@ -1,8 +1,19 @@
 <?php
 
+use App\Http\Controllers\AccessoireController;
 use App\Http\Controllers\AdminCotroller;
 use App\Http\Controllers\Auth\RegisterUserController;
+use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\OrdisController;
+use App\Http\Controllers\PanierController;
+use App\Http\Controllers\ProductArticleController;
+use App\Http\Controllers\ProductBebeController;
+use App\Http\Controllers\ProductHygieneController;
+use App\Http\Controllers\ProductOrdinateurController;
+use App\Http\Controllers\ProductSanteController;
+use App\Http\Controllers\ProductSoinsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ViewProductController;
 use App\Http\Livewire\Accessoires;
 use App\Http\Livewire\Accueil;
 use App\Http\Livewire\Boutique;
@@ -41,6 +52,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //=================================================================================================
+// Route::get('/admin_accueil', AccueilAdmin::class)->name('admin_accueil');
 Route::get('/admin_accueil', [AdminCotroller::class, 'index'])->name('admin_accueil');
 //==============================================ROUTE SUPER ADMIN================================================
 
@@ -121,7 +133,6 @@ Route::group([
 
 
 
-// Route::get('/admin_accueil', AccueilAdmin::class)->name('admin_accueil');
 //=================================================================================================
 // Route::get('/contact_user', Utilisateurs::class)->name('contact_user');
 // Route::get('/contact_client', Clients::class)->name('contact_client');
@@ -152,17 +163,47 @@ Route::get('/', [UserController::class, 'accueil'])->name('accueil');
 Route::get('/boutique', Boutique::class)->name('boutique');
 Route::get('/partenaires', DevenirPartenaire::class)->name('partenaire');
 
-Route::get('/produit/sante', ProduitSante::class)->name('produit_sante');
-Route::get('/produit/soins', ProduitSoins::class)->name('produit_soins');
-Route::get('/produit/ordinateurs', ProduitOrdinateur::class)->name('produit_ordis');
-Route::get('/produit/hygiene', ProduitHygiene::class)->name('produit_hygiene');
-Route::get('/produit/bebe', ProduitBebe::class)->name('produit_bebe');
-Route::get('/produit/autres', ProduitAutre::class)->name('produit_autres');
+//===========================================Produit santé=========================================
+// Route::get('/produit/sante', ProduitSante::class)->name('produit_sante');
+Route::get('/produit/sante', [ProductSanteController::class, 'index'])->name('produit_sante');
+Route::get('/produit/sante/{id}', [ProductSanteController::class, 'show'])->name('produit_sante.show');
+
+//===========================================Produit soins=========================================
+// Route::get('/produit/soins', ProduitSoins::class)->name('produit_soins');
+Route::get('/produit/soins', [ProductSoinsController::class, 'index'])->name('produit_soins');
+Route::get('/produit/soins/{id}', [ProductSoinsController::class, 'show'])->name('produit_soins.show');
+
+//===========================================Produit hygiene=========================================
+// Route::get('/produit/hygiene', ProduitHygiene::class)->name('produit_hygiene');
+Route::get('/produit/hygiene', [ProductHygieneController::class, 'index'])->name('produit_hygiene');
+Route::get('/produit/hygiene/{id}', [ProductHygieneController::class, 'show'])->name('produit_hygiene.show');
+
+//===========================================Produit hygiene=========================================
+// Route::get('/produit/bebe', ProduitBebe::class)->name('produit_bebe');
+Route::get('/produit/bebe', [ProductBebeController::class, 'index'])->name('produit_bebe');
+Route::get('/produit/bebe/{id}', [ProductBebeController::class, 'show'])->name('produit_bebe.show');
+
+//===========================================Produit Ordinateur et Accessoir=========================================
+// Route::get('/produit/ordinateurs', ProduitOrdinateur::class)->name('produit_ordis');
+Route::get('/article/ordinateurs', [OrdisController::class, 'index'])->name('produit_ordis');
+Route::get('/article/ordinateurs/{id}', [OrdisController::class, 'show'])->name('produit_ordis.show');
 
 
-Route::get('/details_produit', ProduitView::class)->name('details_produit');
+// Route::get('/produit/autres', ProduitAutre::class)->name('produit_autres');
+Route::get('/article/accessoir', [AccessoireController::class, 'index'])->name('produit_autres');
+Route::get('/article/accessoir/{id}', [AccessoireController::class, 'show'])->name('produit_autres.show');
 
-//=================================================================================================
+//===========================================Commande================================================================
+Route::post('/produit/commande', [CommandeController::class, 'store'])->name('commande');
+
+
+
+Route::get('/panier', [PanierController::class, 'index'])->name('panier');
+Route::post('/panier/add/{id}', [PanierController::class, 'cart_add'])->name('cart_add');
+Route::post('/panier/update/{id}', [PanierController::class, 'cart_update'])->name('cart_update');
+Route::post('/panier/remove/{id}', [PanierController::class, 'cart_remove'])->name('cart_remove');
+Route::post('/panier/clear', [PanierController::class, 'cart_clear'])->name('cart_clear');
+//===============================================================================================================
 Route::get('/parametre', Parametres::class)->name('parametre.user');
 
 Route::get('/creation', [RegisterUserController::class, 'index'])->name('index');

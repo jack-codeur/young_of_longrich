@@ -17,7 +17,7 @@ class ProduitFactory extends Factory
     public function definition()
     {
         return [
-            "nom_produit" => $this->faker->firstName,
+            "nom_produit" => $this->faker->firstName(),
             "id_typeArticle" => rand(1,6),
             "EstDisponible" => rand(0,1),
             "image_1" => $this->faker->imageUrl(),
@@ -26,8 +26,9 @@ class ProduitFactory extends Factory
             "image_4" => $this->faker->imageUrl(),
             "prix_promo" => $this->faker->numerify,
             "prix_reel" => $this->faker->numerify,
-            "description_produit" => $this->faker->text(15),
-            "mode_utilisation" => $this->faker->text(25)
+            "caracteristique" => $this->faker->text(225),
+            "description_produit" => $this->faker->text(225),
+            "mode_utilisation" => $this->faker->text(125)
         ];
     }
 }

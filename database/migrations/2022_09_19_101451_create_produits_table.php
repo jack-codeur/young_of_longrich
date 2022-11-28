@@ -24,8 +24,9 @@ return new class extends Migration
             $table->string('image_4');
             $table->string('prix_promo');
             $table->string('prix_reel');
-            $table->text('description_produit');
-            $table->text('mode_utilisation');
+            $table->text('caracteristique')->default();
+            $table->text('description_produit')->default();
+            $table->text('mode_utilisation')->default();
             $table->timestamps();
         });
 

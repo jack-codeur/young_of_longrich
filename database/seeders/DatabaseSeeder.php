@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MaladieSeeder::class);
 
         User::factory(15)->create();
-        Article::factory(15)->create();
+        // Article::factory(15)->create();
         Produit::factory(15)->create();
 
 

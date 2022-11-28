@@ -14,20 +14,20 @@
                             <div class="d-flex flex-wrap">
                                 <div class="form-group flex-grow-1 mr-2">
                                     <label>Catégorie</label>
-                                    <select type="text"  wire:model="addArticle.type" class="form-control @error('addArticle.type') is-invalid @enderror">
+                                    <select type="text"  wire:model="addArticle.id_typeArticle" class="form-control @error('addArticle.id_typeArticle') is-invalid @enderror">
                                         <option value="">---Aucune---</option>
                                         @foreach ($categories as $categorie)
                                             <option value="{{$categorie->id}}">{{$categorie->nomTypeArticle}}</option>
                                         @endforeach
                                     </select>
-                                    @error('addArticle.type')
+                                    @error('addArticle.id_typeArticle')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group flex-grow-1">
                                     <label>Model</label>
-                                    <input type="text" wire:model="addArticle.model" class="form-control @error('addArticle.model') is-invalid @enderror">
-                                    @error('addArticle.model')
+                                    <input type="text" wire:model="addArticle.nom_produit" class="form-control @error('addArticle.nom_produit') is-invalid @enderror">
+                                    @error('addArticle.nom_produit')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
@@ -36,12 +36,12 @@
                             <div class="d-flex flex-wrap my-4">
                                 <div class="form-group flex-grow-1 mr-2">
                                     <label>La disponibilité</label>
-                                    <select type="text" wire:model="addArticle.disponible" class="form-control @error('addArticle.disponible') is-invalid @enderror">
+                                    <select type="text" wire:model="addArticle.EstDisponible" class="form-control @error('addArticle.EstDisponible') is-invalid @enderror">
                                         <option value="">---Aucune valeur---</option>
                                         <option value="oui">Oui</option>
                                         <option value="non">Non</option>
                                     </select>
-                                    @error('addArticle.disponible')
+                                    @error('addArticle.EstDisponible')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>

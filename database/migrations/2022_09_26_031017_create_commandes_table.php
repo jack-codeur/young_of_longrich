@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
-            $table->integer('nmbreCommande');
-            $table->foreignId('id_produit')->constrained('produits');
-            $table->foreignId('id_article')->constrained('articles');
+            $table->integer('quantite');
+            $table->string('nom');
+            $table->integer('prix');
+            $table->integer('total');
             $table->foreignId('id_statusCommande')->constrained('status_commandes');
-            $table->foreignId('id_user')->constrained('users');
-            $table->foreignId('id_client')->constrained('clients');
+            // $table->foreignId('id_user')->constrained('users');
             $table->timestamps();
         });
 
@@ -37,7 +37,7 @@ return new class extends Migration
         Schema::dropIfExists('commandes');
 
         Schema::table('commandes', function(Blueprint $table){
-            $table->dropForeign('id_produit', 'id_article', 'id_statusCommande', 'id_user', 'id_client');
+            $table->dropForeign('id_produit', 'id_statusCommande', 'id_user', 'id_client');
         });
     }
 };

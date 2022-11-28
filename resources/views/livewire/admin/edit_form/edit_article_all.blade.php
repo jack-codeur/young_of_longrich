@@ -26,8 +26,8 @@
                                 </div>
                                 <div class="form-group flex-grow-1">
                                     <label>Model</label>
-                                    <input type="text" wire:model="editArticle.model_article" class="form-control @error('editArticle.model_article') is-invalid @enderror">
-                                    @error('editArticle.model_article')
+                                    <input type="text" wire:model="editArticle.nom_produit" class="form-control @error('editArticle.nom_produit') is-invalid @enderror">
+                                    @error('editArticle.nom_produit')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
